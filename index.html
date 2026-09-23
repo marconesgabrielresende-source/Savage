@@ -1,1 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Conhecimentos Gerais</title>
+</head>
+<body>
+ <h1>Quiz de conhecimentos gerais</h1>
+  <div id="placar">0/0</div>
 
+  <div id="card"></div>
+
+  <script>
+    const perguntas = [
+      {
+        pergunta: "Qual é o maior planeta do sistema solar?",
+        opcoes: ["Terra", "Saturno", "Júpiter", "Netuno"],
+        correta: 2
+      },
+      {
+        pergunta: "Em que ano começou a Segunda Guerra Mundial?",
+        opcoes: ["1935", "1939", "1941", "1945"],
+        correta: 1
+      }
+    ];
+
+    const cardEl = document.getElementById("card");
+
+    function mostrarPergunta() {
+      const item = perguntas[0];
+      cardEl.innerHTML = `
+        <p>${item.pergunta}</p>
+        <ul>
+          <li>${item.opcoes[0]}</li>
+          <li>${item.opcoes[1]}</li>
+          <li>${item.opcoes[2]}</li>
+          <li>${item.opcoes[3]}</li>
+        </ul>
+      `;
+    }
+
+    mostrarPergunta();
+  </script>
+
+</body>
+</html>
