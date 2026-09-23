@@ -13,34 +13,49 @@
 
   <script>
     const perguntas = [
-      {
-        pergunta: "Qual é o maior planeta do sistema solar?",
-        opcoes: ["Terra", "Saturno", "Júpiter", "Netuno"],
-        correta: 2
-      },
-      {
-        pergunta: "Em que ano começou a Segunda Guerra Mundial?",
-        opcoes: ["1935", "1939", "1941", "1945"],
-        correta: 1
-      }
-    ];
+  {
+    pergunta: "Qual é o maior planeta do sistema solar?",
+    opcoes: ["Terra", "Saturno", "Júpiter", "Netuno"],
+    correta: 2
+  },
+  {
+    pergunta: "Em que ano começou a Segunda Guerra Mundial?",
+    opcoes: ["1935", "1939", "1941", "1945"],
+    correta: 1
+  }
+];
 
-    const cardEl = document.getElementById("card");
+const cardEl = document.getElementById("card");
 
-    function mostrarPergunta() {
-      const item = perguntas[0];
-      cardEl.innerHTML = `
-        <p>${item.pergunta}</p>
-        <ul>
-          <li>${item.opcoes[0]}</li>
-          <li>${item.opcoes[1]}</li>
-          <li>${item.opcoes[2]}</li>
-          <li>${item.opcoes[3]}</li>
-        </ul>
-      `;
-    }
+function mostrarPergunta() {
+  const item = perguntas[0];
 
-    mostrarPergunta();
+  cardEl.innerHTML = `
+    <p>${item.pergunta}</p>
+    <div id="opcoes"></div>
+  `;
+
+  const opcoesEl = document.getElementById("opcoes");
+
+  item.opcoes.forEach(function (textoOpcao, indice) {
+    const botao = document.createElement("button");
+    botao.textContent = textoOpcao;
+    botao.addEventListener("click", function () {
+      responder(indice, item.correta, botao);
+    });
+    opcoesEl.appendChild(botao);
+  });
+}
+
+function responder(indiceEscolhido, indiceCorreto, botaoClicado) {
+  if (indiceEscolhido === indiceCorreto) {
+    botaoClicado.style.backgroundColor = "lightgreen";
+  } else {
+    botaoClicado.style.backgroundColor = "salmon";
+  }
+}
+
+mostrarPergunta();
   </script>
 
 </body>
